@@ -20,6 +20,7 @@ const VERSION = '0.1.0';
 export interface InboundMessage {
   id: string;
   sender: string;
+  pn: string;
   content: string;
   timestamp: number;
   isGroup: boolean;
@@ -123,6 +124,7 @@ export class WhatsAppClient {
         this.options.onMessage({
           id: msg.key.id || '',
           sender: msg.key.remoteJid || '',
+          pn: msg.key.remoteJidAlt || '',
           content,
           timestamp: msg.messageTimestamp as number,
           isGroup,
@@ -158,6 +160,11 @@ export class WhatsAppClient {
     // Document with caption
     if (message.documentMessage?.caption) {
       return `[Document] ${message.documentMessage.caption}`;
+    }
+
+    // Voice/Audio message
+    if (message.audioMessage) {
+      return `[Voice Message]`;
     }
 
     return null;
