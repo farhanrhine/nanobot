@@ -66,29 +66,46 @@
 pip install nanobot-ai
 ```
 
-**Install from source** (recommended for development)
+## 🧑‍💻 Developer Installation
 
 ```bash
 git clone https://github.com/HKUDS/nanobot.git
 cd nanobot
+```
+
+**Editable install (pip)**
+
+```bash
 pip install -e .
 ```
 
 **Install with uv** (recommended)
 
 ```bash
-git clone https://github.com/HKUDS/nanobot.git
-cd nanobot
+uv venv
 uv sync
+```
+
+**Run without activating**
+
+```bash
 uv run nanobot --help
 ```
 
-Or activate the venv once:
+**Or activate the venv once**
 
 ```bash
-uv sync
-.venv\Scripts\Activate.ps1  # Windows
-# or: source .venv/bin/activate  # Linux/Mac
+# macOS / Linux
+source .venv/bin/activate
+
+# Windows PowerShell
+.venv\Scripts\Activate.ps1
+
+# Windows cmd
+.venv\Scripts\activate.bat
+```
+
+```bash
 nanobot --help
 ```
 
